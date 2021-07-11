@@ -1,5 +1,5 @@
 # Goventy
-This is a simple event management REST API build with Go (Mux & Gorm).
+This is a simple event management REST API built with Go (Mux & Gorm).
 It allows you to register, create an event with different tickets & presenters.
 
 ## Routes
