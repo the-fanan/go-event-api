@@ -1,0 +1,11 @@
+.env
+/.vscode
+supervisor-api.err.*
+supervisor-api.out.*
+assets/.env
+assets/public
+assets/storage
+main
+/logs
+/logs/*
+/mysql

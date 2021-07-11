@@ -1,0 +1,33 @@
+version: "3.3"
+services:
+  web:
+    build: .
+    ports:
+    # - "PORT_ON_MACHINE:PORT_ON_CONTAINER"
+      - "5000:8080"
+    depends_on:
+      - mysql
+    environment:
+      - WAIT_HOSTS=mysql:3306
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=30
+      - WAIT_HOST_CONNECT_TIMEOUT=30
+    links:
+      - redis
+      - mysql
+    volumes:
+      - ./logs:/go/src/app/logs
+
+  mysql:
+    image: mysql:5.7.12
+    volumes:
+      - ./mysql:/var/lib/mysql
+    restart: always
+    ports:
+      - '9000:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: devops
+      MYSQL_DATABASE: goventy
+
+  redis:
+    image: redis:3.0
